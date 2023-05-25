@@ -1,0 +1,52 @@
+<body>
+    <form>
+        Roll no <input type="number" name="Rollno" id="Rollno">
+        <br><br>
+        Att <input type="text" name="att" id="att">
+        <br><br>
+        <input type="button" name="insert" id="insert" value="update">
+    </form>
+
+    <script>
+        const Rollno=document.getElementById('Rollno')
+        const Name=document.getElementById('Name')
+        const att=document.getElementById('att')
+        const insert=document.getElementById('insert')
+        const result=document.getElementById('res')
+         insert.addEventListener('click',()=>{
+            var data={
+                Rollno:parseInt(Rollno.value),
+                att:att.value,
+               
+            }
+            fetch(`http://localhost:8989/api/atts/${Rollno.value}`,{
+                method:"PUT",
+                headers:{
+                    'Content-type': 'application/json; charset=UTF-8'
+                },
+                body: JSON.stringify(data)
+            })
+            // .then(res=>{return res.json()})
+            // .then(res=>{result.innerText=JSON.stringify(res)});
+         })
+    </script>
+</body>
+<style>
+    #getone{
+        border-radius: 5px;
+        height: 25px;
+        width: 60px;
+        background-color: red;
+        border: none;
+        color: aliceblue;
+        cursor: pointer;
+    }
+
+    #bid{
+        border-radius: 5px;
+        height: 30px;
+        width: 100px;
+      
+    }
+
+</style>

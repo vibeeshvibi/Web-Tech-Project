@@ -1,0 +1,38 @@
+<body>
+    
+   Enter The Rollno:  <input type="text" id="Rollno" name="Rollno">
+    <input type="button" id="getone" value="getone">
+    <p id="res"></p>
+
+    <script>
+        const Rollno=document.getElementById('Rollno');
+        const result=document.getElementById('res');
+        const getone=document.getElementById('getone');
+        getone.addEventListener('click',()=>{
+            fetch(`http://localhost:8989/api/atts/${Rollno.value}`)
+            .then(res=>{return res.json()})
+            .then(res=>{result.innerText=JSON.stringify(res)})
+
+            
+        })
+    </script>
+</body>
+<style>
+    #getone{
+        border-radius: 5px;
+        height: 25px;
+        width: 60px;
+        background-color: red;
+        border: none;
+        color: aliceblue;
+        cursor: pointer;
+    }
+
+    #bid{
+        border-radius: 5px;
+        height: 30px;
+        width: 100px;
+      
+    }
+
+</style>

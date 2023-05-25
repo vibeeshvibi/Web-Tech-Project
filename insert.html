@@ -1,0 +1,46 @@
+<body>
+    <form>
+        ROLLNO <input type="number" name="Rollno" id="Rollno">
+        <br><br>
+        NAME &nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="Name" id="Name">
+        <br><br>
+        <input type="button" name="insert" id="insert" value="Add">
+        <br>
+        <p id="res"></p>
+    </form>
+
+    <script>
+        const Rollno=document.getElementById('Rollno')
+        const Name=document.getElementById('Name')
+        const insert=document.getElementById('insert')
+        const result=document.getElementById('res')
+         insert.addEventListener('click',()=>{
+            var data={
+                Rollno:parseInt(Rollno.value),
+                Name:Name.value,
+               
+            }
+            fetch('http://localhost:8989/api/atts',{
+                method:"POST",
+                headers:{
+                    'Content-type': 'application/json; charset=UTF-8'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(res=>{return res.json()})
+            .then(res=>{result.innerText=JSON.stringify(res)});
+         })
+    </script>
+</body>
+<style>
+    #insert{
+        border-radius: 5px;
+        height: 30px;
+        width: 60px;
+        background-color: red;
+        border: none;
+        color: aliceblue;
+        cursor: pointer;
+        margin-left: 50px;
+    }
+</style>

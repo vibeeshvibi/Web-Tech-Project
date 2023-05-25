@@ -1,0 +1,21 @@
+<body>
+    
+   Roll NO  <input type="number" id="Rollno" name="Rollno">
+    <input type="button" id="getone" value="Delete">
+    <p id="res"></p>
+
+    <script>
+        const Rollno=document.getElementById('Rollno');
+        const result=document.getElementById('res');
+        const getone=document.getElementById('getone');
+        getone.addEventListener('click',()=>{
+            fetch(`http://localhost:8989/api/atts/${Rollno.value}`,{
+                method:'DELETE'
+            })
+            .then(res=>{return res.json()})
+            .then(res=>{result.innerText=JSON.stringify(res)})
+
+            
+        })
+    </script>
+</body>
